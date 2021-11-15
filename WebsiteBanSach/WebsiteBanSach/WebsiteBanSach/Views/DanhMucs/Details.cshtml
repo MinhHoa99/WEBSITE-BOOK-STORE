@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebsiteBanSach.Models.Sach>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header>
+    <style>
+        .card:hover {
+            background: #F5F5F5;
+        }
+    </style>
+</header>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-mb-6 mb-4">
+            <div class="card h-100 shadow-lg bg-white rounded" style="border: none;">
+                <img class="card-img-top" src="~/HinhAnh/@item.Hinh" style="margin: auto; width: 95%; height: auto" alt="" />
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <b href="#">@item.TenSach</b>
+                    </h4>
+                    <h5>
+                        @item.TacGia
+                    </h5>
+                    <a>
+                        <b>
+                            @item.GiaSach.ToString("#,##0").Replace(',', '.') VNĐ
+                        </b>
+                    </a>
+                </div>
+                <div class="car-footer">
+                    <div class="btn btn-info center-block">
+                        @Html.ActionLink("Chi Tiết", "Details", "Saches", new { id = item.MaSach }, null)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebsiteBanSach.Models.Sach>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TacGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiBia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayXuatBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KichThuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        <a href="@Url.Action("Details", "Saches", new { id = item.MaSach})">@item.TenSach</a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GiaSach)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TacGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LoaiBia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoTrang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KichThuoc)
+    </td>
+    <td>
+        @item.MoTa.Substring(1, 20)
+    </td>
+    <td>
+        <img src="~/HinhAnh/@item.Hinh" width="150" height="150" />
+    </td>
+</tr>
+}
+
+</table>

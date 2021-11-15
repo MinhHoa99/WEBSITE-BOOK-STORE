@@ -1,0 +1,65 @@
+﻿@model PagedList.PagedList<WebsiteBanSach.Models.Sach>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<header>
+    <style>
+        .card:hover {
+            background: #F5F5F5;
+        }
+    </style>
+</header>
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+<p>
+    Search: @Html.TextBox("searchString", ViewBag.currentFilter as string)
+    Giá thấp nhất: @Html.TextBox("giaMin")
+    Giá cao nhất: @Html.TextBox("giaMax")
+    <input type="submit" value="Tìm kiếm" />
+    @Html.ActionLink("Quay Lại", "Index")
+
+</p>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-mb-6 mb-4">
+            <div class="card h-100 shadow-lg bg-white rounded" style="border: none;margin-top: 20px">
+                <img class="card-img-top" src="~/HinhAnh/@item.Hinh" style="margin: auto; width: 95%; height: auto; margin-top: 5px" alt="" />
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4 class="card-title">
+                            <b href="#">@item.TenSach</b>
+                        </h4>
+                        <h5>
+                            Tác Giả : @item.TacGia
+                        </h5>
+                        <a>
+                            <b>
+                                @item.GiaSach.ToString("#,##0").Replace(',', '.') VNĐ
+                            </b>
+                        </a>
+                    </div>
+                    </div>
+                    
+                <div class="car-footer">
+                    <div class="btn btn-info center-block">
+                        @Html.ActionLink("Chi Tiết", "Details", "Saches", new { id = item.MaSach }, null)
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<hr />
+
+<div class="text-center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.currentSort, currentFilter = ViewBag.currentFilter }))
+</div>
+

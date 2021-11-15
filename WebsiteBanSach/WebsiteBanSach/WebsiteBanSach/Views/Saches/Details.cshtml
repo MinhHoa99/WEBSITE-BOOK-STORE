@@ -1,0 +1,98 @@
+﻿@model WebsiteBanSach.Models.Sach
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        .col-sm-4:hover {
+            -ms-transform: scale(1.5); /* IE 9 */
+            -webkit-transform: scale(1.5); /* Safari 3-8 */
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+
+    <hr />
+    <div class="row">
+        <dl class="dl-horizontal col-sm-6">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TenSach)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenSach)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GiaSach)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GiaSach) VNĐ
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TacGia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TacGia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LoaiBia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LoaiBia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgayXuatBan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgayXuatBan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SoTrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoTrang)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KichThuoc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KichThuoc)
+            </dd>
+            <dt style="margin-top: 20px">
+                <a class="btn btn-success" href="@Url.Action("ThemVaoGio", "CartItem", new { sanPhamID = Url.RequestContext.RouteData.Values["id"] })">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ
+                </a>
+                <a class="btn btn-warning" style="margin-left: 10px"><span class="glyphicon glyphicon-credit-card"></span>  Thanh Toán</a>
+            </dt>
+        </dl>
+        <dl class="col-sm-4">
+            <dd>
+                <img src="~/HinhAnh/@Model.Hinh" width="300" height="300" />
+            </dd>
+        </dl>
+    </div>
+<br />
+<div class="row">
+    <a>
+        @Html.DisplayFor(model => model.MoTa)
+    </a>
+</div>
+
+
